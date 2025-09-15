@@ -1,10 +1,10 @@
 import React from "react";
-import getSupabaseServerClient from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 import { Project } from "@/types/project";
 import ProjectsGrid from "@/components/ProjectsGrid";
 
 export default async function ProjectsPage() {
-  const supabase = getSupabaseServerClient();
+  const supabase = createClient();
   const { data: projects, error } = await supabase
     .from("projects")
     .select("*")
